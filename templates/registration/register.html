@@ -1,0 +1,14 @@
+{% extends 'login_base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Registrierung{% endblock %}
+{% block form %}
+    <h1 class="h3 mb-3 font-weight-normal">Bestellsystem Registrieren</h1>
+    <!--#https://django-crispy-forms.readthedocs.io/en/latest/-->
+    {{ form|crispy}}
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Registrieren</button>
+    <a href="/login" class="btn btn-secondary btn-block" role="button">Zurück zum Login</a>
+{% endblock form %}
+

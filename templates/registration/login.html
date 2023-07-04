@@ -1,0 +1,43 @@
+{% extends 'login_base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block form %}
+
+<br><br><br>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} text-center" role="alert">
+     {{ message }}
+</div>
+ {% endfor %}
+ {% endif %}
+
+
+        <h1 class="h3 mb-3 font-weight-normal">Bestellsystem Login</h1>
+        <!-- 'sr-only' will hide the text : -->
+        <label for="text" class="sr-only">Username</label>
+        <input
+            type="text"
+            id="inputText"
+            class="form-control mb-2"
+            name = "username"
+            placeholder="Benutzername"
+            required
+            autofocus
+        >
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input
+            type="password"
+            id="inputPassword"
+            class="form-control mb-2"
+            name = "password"
+            placeholder="Passwort"
+            required
+        >
+    <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Login
+        </button>
+
+        <a href="/register" class="btn btn-secondary btn-block" role="button">Registrieren</a>
+{% endblock form%}

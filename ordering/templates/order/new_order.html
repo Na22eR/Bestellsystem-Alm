@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Neue Bestellung
+{% endblock %}
+
+{% block content %}
+    <div class="container p-3 my-3 border">
+        <h2>Neue Bestellung</h2>
+
+        <div>
+            <form action="{% url 'bestellung' %}" method="post">
+                {% csrf_token %}
+
+                <div class="input-group mt-3 p-2 border">
+                    <!-- label for="tisch_nr" class="form-label">Tisch Nr</label-->
+                    <div class="input-group-prepend">
+                        <span for="tisch_nr" class="input-group-text">Tisch Nr</span>
+                    </div>
+                    <input type="number" class="form-control" id="tisch_nr" name="tisch_nr"
+                           size="8" min="0" max="50" placeholder="XX" required>
+                </div>
+
+                {% for speise in speisen %}
+                    {% if speise.anzahl_bestellt >= speise.anzahl %}
+                        <div class="section p-3 my-3 bg-secondary text-white border">
+                        <h4>{{ speise.name }}</h4>
+                        <div class="row>">
+                            <button type="button" class="btn btn-dark btn-lg" style="text-align: center"
+                                    onclick="js_subtract('{{ speise.id_name }}')"><b>-</b></button>
+                            <input type="text" class="form-control-sm" id="{{ speise.id_name }}"
+                                   name="{{ speise.id_name }}" value="0" maxlength="4"
+                                   size="4" readonly>
+                            <button type="button" class="btn btn-dark btn-lg" style="text-align: center"
+                                    onclick="js_add('{{ speise.id_name }}')"><b>+</b></button>
+                        </div>
+                    {% else %}
+                        <div class="section p-3 my-3 bg-dark text-white border">
+                        <h4>{{ speise.name }}</h4>
+                        <div class="row>">
+                            <button type="button" class="btn btn-danger btn-lg" style="text-align: center"
+                                    onclick="js_subtract('{{ speise.id_name }}')"><b>-</b></button>
+                            <input type="text" class="form-control-sm" id="{{ speise.id_name }}"
+                                   name="{{ speise.id_name }}" value="0" maxlength="4"
+                                   size="4" readonly>
+                            <button type="button" class="btn btn-success btn-lg" style="text-align: center"
+                                    onclick="js_add('{{ speise.id_name }}')"><b>+</b></button>
+                        </div>
+                    {% endif %}
+                <div class="row">
+                    <div class="my-2">
+                        <label for="comment">Anmerkung:</label>
+                        <textarea class="form-control" rows="2" id="amk_{{ speise.id_name }}"
+                                  name="amk_{{ speise.id_name }}"></textarea>
+                    </div>
+
+                </div>
+
+
+                </div>
+                {% endfor %}
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-block btn-lg">Bestellung senden</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+    <script>
+        function js_subtract(elem) {
+            let value = parseInt(document.getElementById(elem).value, 10);
+            if (value >= 1) {
+                document.getElementById(elem).value = value - 1;
+
+            }
+        }
+
+        function js_add(elem) {
+            let value = parseInt(document.getElementById(elem).value, 10);
+            if (value < 50) {
+                document.getElementById(elem).value = value + 1;
+            }
+        }
+    </script>
+
+
+
+{% endblock %}

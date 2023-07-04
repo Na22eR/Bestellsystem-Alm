@@ -1,0 +1,24 @@
+.hintergrund {
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    color: lightgray;
+    text-shadow: 2px 2px 2px rgba(0,0,0,.2);
+}
+
+.color-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7); /*Kontrast: https://www.youtube.com/watch?v=W87XNjvXiWw*/
+
+}
+
+.form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+

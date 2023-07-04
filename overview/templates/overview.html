@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Bestellübersicht
+{% endblock %}
+
+{% block content %}
+    <!-- quelle: https://getbootstrap.com/docs/5.0/content/tables/-->
+        <div class="table responsive">
+            <table class="table table-hover table align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tischnummer</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Bedienung</th>
+                        <th>Uhrzeit</th>
+                        <th>Gesamtpreis</th>
+                        <th>Rechnung drucken</th>
+                    </tr>
+                </thead>
+                    {% for bestellung, position in queryset.items %}
+                        <tbody>
+                            <tr>
+                                <td>{{ bestellung.tisch_nr }}</td>
+                                <td colspan="3">
+                                    <table class="table mb-0">
+                                        <tr>
+                                            <th>Bestellung</th>
+                                            <th>Anzahl</th>
+                                            <th>Anmerkung</th>
+                                        </tr>
+                                        {% for pos in position %}
+                                            <tr>
+                                                <td>{{ pos.speise }}</td>
+                                                <td>{{ pos.anzahl }}</td>
+                                                <td>{{ pos.anmerkung }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </td>
+                                <td>{{ bestellung.bedienung }}</td>
+                                <td>{{ bestellung.uhrzeit|date:'d.m.Y H:i' }}</td>
+                                <td>{{ bestellung.gesamtpreis }} €</td>
+                                <td><a href="/bill?{{ bestellung.id }}" class="btn btn-sm btn-dark"> Rechnung </a> </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+            </table>
+        </div>
+{% endblock %}
