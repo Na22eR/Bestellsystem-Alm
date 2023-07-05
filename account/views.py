@@ -24,14 +24,14 @@ def register(request):  # Funktion, die ein Request-Objekt als Parameter hat (qu
 
 def login_user(request):
     if request.user.is_authenticated:
-        return redirect('bestellung')
+        return redirect('order')
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('bestellung')
+            return redirect('order')
         else:
             #https://docs.djangoproject.com/en/4.0/ref/contrib/messages/
             messages.error(request, "Der Benutzername oder das Kennwort ist falsch")
