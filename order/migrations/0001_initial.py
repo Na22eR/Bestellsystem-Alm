@@ -42,8 +42,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('anzahl', models.IntegerField()),
                 ('anmerkung', models.CharField(max_length=200)),
-                ('id_bestellung', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ordering.bestellung')),
-                ('speise', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ordering.speisekarte')),
+                ('id_bestellung', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='order.bestellung')),
+                ('speise', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='order.speisekarte')),
             ],
         ),
     ]

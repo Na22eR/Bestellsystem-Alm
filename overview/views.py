@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.shortcuts import render
 
-from ordering.models import Bestellung, Speisekarte, Bestellposition
+from order.models import Bestellung, Speisekarte, Bestellposition
 
 
 @login_required(login_url='home')
@@ -26,7 +26,7 @@ def overview(request):
         "queryset": dict(queryset)
     }
 
-    return render(request, 'overview.html', context)
+    return render(request, 'overview/overview.html', context)
 
 
 # @login_required(login_url='home')
@@ -49,4 +49,4 @@ def bill(request):
             "queryset": dict(queryset)
         }
 
-    return render(request, 'bill.html', context)
+    return render(request, 'overview/bill.html', context)

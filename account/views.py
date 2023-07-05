@@ -1,10 +1,8 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from templates.forms import RegisterUserForm
+from account.templates.account.forms import RegisterUserForm
 
 
 def register(request):  # Funktion, die ein Request-Objekt als Parameter hat (quasi das was über http kommt)
@@ -21,7 +19,7 @@ def register(request):  # Funktion, die ein Request-Objekt als Parameter hat (qu
     else:
         form = RegisterUserForm()
 
-    return render(request, 'registration/register.html', {"form": form})
+    return render(request, 'account/register.html', {"form": form})
 
 
 def login_user(request):
@@ -39,4 +37,4 @@ def login_user(request):
             messages.error(request, "Der Benutzername oder das Kennwort ist falsch")
             return redirect('home')
     else:
-        return render(request, 'registration/login.html', {})
+        return render(request, 'account/login.html', {})
