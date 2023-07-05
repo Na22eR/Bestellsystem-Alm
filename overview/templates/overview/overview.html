@@ -43,7 +43,7 @@
                                 <td>{{ bestellung.bedienung }}</td>
                                 <td>{{ bestellung.uhrzeit|date:'d.m.Y H:i' }}</td>
                                 <td>{{ bestellung.gesamtpreis }} €</td>
-                                <td><a href="/bill?{{ bestellung.id }}" class="btn btn-sm btn-dark"> Rechnung </a> </td>
+                                <td><a href="/overview/bill?{{ bestellung.id }}" class="btn btn-sm btn-dark"> Rechnung </a> </td>
                             </tr>
                         </tbody>
                     {% endfor %}
