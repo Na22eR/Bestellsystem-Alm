@@ -3,9 +3,9 @@ import collections
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from ordering.models import Speisekarte
-from ordering.models import Bestellung
-from ordering.models import Bestellposition
+from order.models import Speisekarte
+from order.models import Bestellung
+from order.models import Bestellposition
 
 Speisekarte_id_name = Speisekarte.objects.values_list('id_name')
 list_speisen = []
@@ -80,4 +80,4 @@ def order(request):
             "queryset": dict(queryset)
         }
 
-        return render(request, 'bill.html', context)
+        return render(request, 'overview/bill.html', context)

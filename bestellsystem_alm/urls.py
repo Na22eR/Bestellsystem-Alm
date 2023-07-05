@@ -1,4 +1,4 @@
-"""bestellsystem_vereinsfeste URL Configuration
+"""bestellsystem_alm URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -19,17 +19,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 
-import accounts.views
-import ordering.views
+import account.views
+import order.views
 import overview.views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('register/', accounts.views.register, name='register'),
-    path('', accounts.views.login_user, name='home'),
-    path('bestellung/', ordering.views.order, name='bestellung'),
+    path('register/', account.views.register, name='register'),
+    path('', account.views.login_user, name='home'),
+    path('bestellung/', order.views.order, name='bestellung'),
     path('overview/', overview.views.overview, name='uebersicht'),
     #path('rechnung/', overview.views.drucken, name='rechnung'),
     path('bill/', overview.views.bill, name='bill'),

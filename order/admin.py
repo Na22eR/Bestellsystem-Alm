@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from ordering.models import Bestellung
-from ordering.models import Bestellposition
-from ordering.models import Speisekarte
+from order.models import Bestellung
+from order.models import Bestellposition
+from order.models import Speisekarte
 
 admin.site.register(Bestellung)
 admin.site.register(Bestellposition)
