@@ -5,14 +5,14 @@ from django.contrib import messages
 from account.templates.account.forms import RegisterUserForm
 
 
-def register(request):  # Funktion, die ein Request-Objekt als Parameter hat (quasi das was über http kommt)
+def register(request):  # Funktion, die ein Request-Objekt als Parameter hat
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)  # RegisterUserForms vererbt von UserCreationForm
         if form.is_valid():
             form.save()
             '''username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            user = authenticate(username=username, password=password)  # nach der Registrierung gleich login
+            user = authenticate(username=username, password=password)  
             login(request, user)'''
             messages.success(request, "Registrierung erfolgreich!")
             return redirect('home')

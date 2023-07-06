@@ -1,4 +1,5 @@
-"""bestellsystem_alm URL Configuration
+"""
+bestellsystem_alm URL Configuration
 """
 
 from django.contrib import admin

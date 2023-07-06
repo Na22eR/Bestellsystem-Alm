@@ -2,4 +2,7 @@
   #printPageButton {
     display: none;
   }
+  #newOrderButton {
+    display: none;
+  }
 }

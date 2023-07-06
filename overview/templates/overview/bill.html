@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}</title>
+    <title>Rechnung</title>
     {% load static %}
     <link rel="icon" href="../../static/images/logo.jpg" type="image/icon type">
     <link rel="stylesheet" href="{% static '/css/print.css' %}">
@@ -57,10 +57,16 @@
 
       {% endfor %}
 </div>
-<div class="d-grid gap-2 col-6 mx-auto">
-    <button id="printPageButton" class="btn btn-lg btn-primary btn-block" onclick="drucken(); neu();"> Drucken + neue
-        Bestellung
-    </button>
+
+<div class="row justify-content-center">
+    <div class="d-grid gap-2 col-3">
+        <button id="printPageButton" class="btn btn-lg btn-primary btn-block" onclick="drucken();"> Beleg drucken
+        </button>
+    </div>
+    <div class="d-grid gap-2 col-3">
+        <button id="newOrderButton" class="btn btn-lg btn-primary btn-block" onclick="neu();"> Neue Bestellung
+        </button>
+    </div>
 </div>
 
 <script>

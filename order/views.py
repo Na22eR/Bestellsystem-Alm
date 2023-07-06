@@ -23,12 +23,11 @@ def get_gesamtpreis(req_dict):
     return gesamtpreis
 
 
-# quelle: https://www.youtube.com/watch?v=RuM2BLTP5aU
 # https://docs.djangoproject.com/en/4.0/topics/auth/default/
 @login_required(login_url='home')
 def order(request):
     if request.method == 'GET':
-        # "IMMER": Es soll auf jeden Fall immer die Bestellseite für neue Bestellungen zurück gegeben werden
+        # Bestellseite für neue Bestellungen zurück gegeben
         speisen = Speisekarte.objects.all()
         context = {
             "speisen": speisen,
@@ -57,7 +56,7 @@ def order(request):
                                         preis=preis)
                 b_pos.save()
 
-        # Eintrag für Tabelle Speisekarte --> update anzahl_bestellt
+        # Eintrag für Tabelle Speisekarte
         for x in request.POST:
             if x in list_speisen and int(request.POST[x]) > 0:
                 speise = Speisekarte.objects.get(id_name=x)

@@ -5,8 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Bestellung(models.Model):
     tisch_nr = models.IntegerField()
-    uhrzeit = models.DateTimeField(auto_now_add=True)   #auto_now_add: füllt timestamp automatisch bei Erstellen des Objektes aus (editierbar)
-    # status = models.IntegerField()
+    uhrzeit = models.DateTimeField(auto_now_add=True)
     bedienung = models.ForeignKey(User, on_delete=models.CASCADE)
     gesamtpreis = models.DecimalField(max_digits=7, decimal_places=2)
 
